@@ -1,18 +1,14 @@
-{ nixpkgs, pkgs, inputs, home-manager, ... }:
+{ nixpkgs, home-manager, ... }:
 {
-  inherit pkgs;
-  mkHome = {
-      username,
-      homeDirectory,
-      configHome,
-    }:
-    home-manager.lib.homeManagerConfiguration {
-      modules = [
-        import ../home/home.nix
-      ];
+  mkHome = { pkgs, system, username, homeDirectory }: (
+    home-manager.lib.homeManagerConfiguration rec {
       inherit pkgs;
-      extraSpecialArgs = {
-        inherit username homeDirectory configHome;
-      };
-  };
+      modules = [
+        ../home
+        {
+          home = { inherit username homeDirectory; };
+        }
+      ];
+    }
+  );
 }

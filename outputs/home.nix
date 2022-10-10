@@ -1,24 +1,14 @@
-{ inputs, system, ... }:
-
-with inputs;
+{ self, inputs, pkgs, ... }:
 
 let
-  pkgs = import nixpkgs {
-    inherit system;
+  inherit (self.lib) mkHome;
 
-    config.allowUnfree = true;
-  };
-
-  mkHome = { username }: (
-    home-manager.lib.homeManagerConfiguration rec {
-      inherit pkgs;
-
-      modules = [
-        ../home
-      ];
-    }
-  );
 in
 {
-  tirth = mkHome { username = "tirth"; };
+  tirth-nixvm = mkHome rec {
+    inherit pkgs;
+    system = "x86_64-linux"; 
+    username = "tirth";
+    homeDirectory = "/home/${username}";
+  };
 }

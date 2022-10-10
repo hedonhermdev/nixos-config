@@ -1,4 +1,9 @@
 [
-  ./git.nix
-  ./tmux.nix
+./exa.nix
+./fzf.nix
+./git.nix
+./nvim.nix
+./tmux.nix
+./zoxide.nix
+./zsh.nix
 ]

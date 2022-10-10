@@ -3,7 +3,6 @@
 let 
   gitConfig = {
     core = {
-      editor = "nvim";
     };
     init.defaultBranch = "main";
     merge = {

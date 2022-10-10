@@ -23,6 +23,8 @@
 
   # create new user for myself
   users = {
+    # everyone uses zsh
+    defaultUserShell = pkgs.zsh;
     users = {
       "tirth" = {
         group = "users";
@@ -49,7 +51,6 @@
 
   # enable vim system-wide
   environment.systemPackages = with pkgs; [
-    vim
     home-manager
   ];
 
