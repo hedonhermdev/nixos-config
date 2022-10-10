@@ -1,15 +1,27 @@
-{inputs, system}:
+{inputs}:
 
 let
   nixosSystem = inputs.nixpkgs.lib.nixosSystem;
 in {
-  nixvm = nixosSystem {
-    inherit system;
+  nixvm-x86_64 = nixosSystem {
+    system = "x86_64-linux";
     specialArgs = {
       inherit inputs;
     };
     modules = [
-      ../nixos/nixvm
+      ../nixos/machine/nixvm-x86_64.nix
+      ../nixos/configuration.nix
+    ];
+  };
+
+  nixvm-aarch64 = nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = {
+      inherit inputs;
+    };
+    modules = [
+      ../nixos/machine/nixvm-aarch64.nix
+      ../nixos/configuration.nix
     ];
   };
 }

@@ -15,29 +15,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-flake, ... }@inputs:
-    let
-      system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-
-	overlays = [
-	  neovim-flake.overlays.default
-	];
-      };
-
-    in {
-      lib = import ./lib inputs;
-      homeConfigurations = import ./outputs/home.nix {
-        inherit self inputs pkgs;
-      };
-
-      nixosConfigurations = (
-        import ./outputs/nixos.nix {
-          inherit inputs system;
-        }
-      );
+  outputs = { self, nixpkgs, home-manager, neovim-flake, ... }@inputs: {
+    lib = import ./lib inputs;
+    homeConfigurations = import ./outputs/home.nix {
+      inherit self inputs nixpkgs;
     };
+
+    nixosConfigurations = (
+      import ./outputs/nixos.nix {
+        inherit inputs;
+      }
+    );
+  };
 }
