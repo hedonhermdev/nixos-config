@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, inputs, overlays, ... }:
 
 let
   inherit (self.lib) mkHome mkNixpkgs;
@@ -10,13 +10,13 @@ in
     system = "x86_64-linux";
   in mkHome rec {
     inherit system username homeDirectory;
-    pkgs = mkNixpkgs system;
+    pkgs = mkNixpkgs { inherit system overlays; };
   };
 
   tirth-aarch64 = let
     system = "aarch64-linux";
   in mkHome rec {
     inherit system username homeDirectory;
-    pkgs = mkNixpkgs system;
+    pkgs = mkNixpkgs { inherit system overlays; };
   };
 }

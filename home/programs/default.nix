@@ -5,5 +5,6 @@
 ./nvim.nix
 ./tmux.nix
 ./zoxide.nix
+./zettl.nix
 ./zsh.nix
 ]

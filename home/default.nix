@@ -2,10 +2,12 @@
 let
   defaultPkgs = with pkgs; [
   bat
-  cargo
   exa
+  fd
   fortune
   fzf
+  gcc
+  gdb
   git
   glow
   htop
@@ -16,7 +18,8 @@ let
   nvimPacked
   ranger
   ripgrep
-  rustc
+  rnix-lsp
+  rust-bin.stable.latest.default
   rust-analyzer
   thefuck
   tldr
@@ -32,10 +35,16 @@ in {
     packages = defaultPkgs;
 
     shellAliases = {
-      ls = "exa --icons";
+      "ls" = "exa --icons";
       "ls -l" = "exa --icons --long --header --git";
       "ls -x" = "exa --icons --long --extended";
       "cd" = "z";
+      "nd" = "nix develop";
+      "ns" = "nix-shell";
+      "nf" = "nix flake";
+      "nfu" = "nix flake update";
+      "nfs" = "nix flake show";
+      "nr" = "nix repl";
     };
   };
   

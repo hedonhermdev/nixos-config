@@ -46,8 +46,13 @@
 
   # enable vim system-wide
   environment.systemPackages = with pkgs; [
-    home-manager
+    home-manager # user packages are installed with home-brew
+    mosh # ssh replacement
   ];
+
+  programs.mosh.enable = true; # start mosh server
+
+  programs.git.enable = true;
 
   # enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

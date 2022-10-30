@@ -1,11 +1,10 @@
-{ nixpkgs, home-manager, neovim-flake, ... }:
+{ inputs, ... }:
+
+with inputs;
 {
 
-  mkNixpkgs = system: import nixpkgs {
-      inherit system;
-      overlays = [
-        neovim-flake.overlays.default
-      ];
+  mkNixpkgs = { system, overlays }: import nixpkgs {
+      inherit system overlays;
       config = {
         allowUnfree = true;
       };
@@ -16,6 +15,7 @@
       inherit pkgs;
       modules = [
         ../home
+        zettl-flake.nixosModules."${system}".hm
         {
           home = { inherit username homeDirectory; };
         }
