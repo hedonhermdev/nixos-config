@@ -19,4 +19,13 @@ in
     inherit system username homeDirectory;
     pkgs = mkNixpkgs { inherit system overlays; };
   };
+
+  xiangd-aarch64 = let
+    system = "aarch64-linux";
+    username = "xiangd";
+    homeDirectory = "/home/xiang";
+  in mkHome rec {
+    inherit system username homeDirectory;
+    pkgs = mkNixpkgs { inherit system overlays; };
+  };
 }

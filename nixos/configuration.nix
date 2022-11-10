@@ -30,6 +30,14 @@
           ./ssh/authorized_keys
         ];
       };
+      "xiangd" = {
+        group = "users";
+        isNormalUser = true;
+        home = "/home/xiangd";
+        openssh.authorizedKeys.keyFiles = [
+          ./ssh/authorized_keys
+        ];
+      };
     };
   };
 
@@ -53,6 +61,10 @@
   programs.mosh.enable = true; # start mosh server
 
   programs.git.enable = true;
+
+  services.tailscale.enable = true;
+
+  services.spice-vdagentd.enable = true;
 
   # enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

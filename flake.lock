@@ -419,11 +419,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1666990295,
-        "narHash": "sha256-JPMTX8W36IPV1jmKV1qEhNBI4MbIPYsnccWyTUlSiG0=",
+        "lastModified": 1667981810,
+        "narHash": "sha256-p27zd5M+OkfND46gzbGkaHlNBZsYe95M48OJuFeuuSY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "423211401c245934db5052e3867cac704f658544",
+        "rev": "6ce3493a3c5c6a8f4cfa6f5f88723272e0cfd335",
         "type": "github"
       },
       "original": {
@@ -615,16 +615,37 @@
         "vsnip": "vsnip"
       },
       "locked": {
-        "lastModified": 1667172164,
-        "narHash": "sha256-4xSQ0aX4TPtHO0pL92IFgdTHE4kW5sN96nxgiZXhuag=",
+        "lastModified": 1668072590,
+        "narHash": "sha256-GzoFmz6usooV0aYXPgpfsh7LYiz+Lk5dH7uVvQU599E=",
         "owner": "hedonhermdev",
         "repo": "neovim-flake",
-        "rev": "addcf19261d2e26065019a2f347d93d24f13cf67",
+        "rev": "1f24b1428c50d97280d408cb5a448288a0123eb4",
         "type": "github"
       },
       "original": {
         "owner": "hedonhermdev",
         "repo": "neovim-flake",
+        "type": "github"
+      }
+    },
+    "nix-ld": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils_2"
+      },
+      "locked": {
+        "lastModified": 1652641841,
+        "narHash": "sha256-TTBz20XR2vmvOSDu8hXcbHbOEI0t/IWq8vZuRKyep1E=",
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "rev": "c25cc4b5ec65f03c2bb96f927ae724a59c51d7ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-ld",
         "type": "github"
       }
     },
@@ -662,11 +683,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1667050928,
-        "narHash": "sha256-xOn0ZgjImIyeecEsrjxuvlW7IW5genTwvvnDQRFncB8=",
+        "lastModified": 1667901915,
+        "narHash": "sha256-IkSou5ox/yZ2YUhGpk8vxd2TNU2pwRlYtir5k55NaxE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fdebb81f45a1ba2c4afca5fd9f526e1653ad0949",
+        "rev": "093268502280540a7f5bf1e2a6330a598ba3b7d0",
         "type": "github"
       },
       "original": {
@@ -823,6 +844,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "neovim-flake": "neovim-flake",
+        "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_3",
         "rust-overlay": "rust-overlay_2",
         "zettl-flake": "zettl-flake"
@@ -853,11 +875,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1667098607,
-        "narHash": "sha256-zTYgUaS+81mNq8Z0v2WYr46ACJFBeWqcQfOVQaTxtNE=",
+        "lastModified": 1668048396,
+        "narHash": "sha256-SUWQlSa/H5XKPeuF9XmWzmwIJrgK42Lak6/1jBAwyd0=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "de5c4d5d40ae0a0dab67c5f7ae8d26c5445cf00d",
+        "rev": "859fefb532bb957f51a9b5e8e3ba2e48394c9353",
         "type": "github"
       },
       "original": {
@@ -983,11 +1005,26 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1659877975,
-        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
+      "locked": {
+        "lastModified": 1652372896,
+        "narHash": "sha256-lURGussfF3mGrFPQT3zgW7+RC0pBhbHzco0C7I+ilow=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "0d347c56f6f41de822a4f4c7ff5072f3382db121",
         "type": "github"
       },
       "original": {
@@ -1054,11 +1091,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1667160086,
-        "narHash": "sha256-bQEErk9ukwsLgk7ERkxWAIh0i6PHpQRUp8x6Qd223TU=",
+        "lastModified": 1667175155,
+        "narHash": "sha256-cKGGgEylcNj6W6g4ldERRHXOADwCxdWxbsH6GKjSEak=",
         "owner": "hedonhermdev",
         "repo": "zettl",
-        "rev": "cc4b44690c41779f58a4a64aa5679c85492c3fbd",
+        "rev": "bad1a4601fd04311b12849254695d0a70ee34d2d",
         "type": "github"
       },
       "original": {

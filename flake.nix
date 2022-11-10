@@ -17,12 +17,17 @@
     };
 
     zettl-flake = {
-      url = github:hedonhermdev/zettl;
+      url = "github:hedonhermdev/zettl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-flake, zettl-flake, rust-overlay, ... }@inputs: let 
+  outputs = { self, nixpkgs, home-manager, neovim-flake, zettl-flake, rust-overlay, nix-ld, ... }@inputs: let 
     overlays = [
       neovim-flake.overlays.default
       rust-overlay.overlays.default

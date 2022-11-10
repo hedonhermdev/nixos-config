@@ -22,6 +22,7 @@ in {
     modules = [
       ../nixos/machine/nixvm-aarch64.nix
       ../nixos/configuration.nix
+      ../nixos/ld-patch.nix
     ];
   };
 }
