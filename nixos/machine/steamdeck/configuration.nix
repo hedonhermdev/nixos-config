@@ -1,22 +1,31 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [ # Include the results of the hardware scan.
+      ./jovian/modules
+    ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # use unstable channel
+  networking.hostName = "steamdeck";
+  networking.networkmanager.enable = true;
+
   system.autoUpgrade.channel = "https://nixos.org/channels/unstable/";
 
-  # enable ssh server
-  services = {
-    openssh = {
-      enable = true;
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-    };
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  # enable openssh
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+    kbdInteractiveAuthentication = false;
   };
 
-  # create new user for myself
   users = {
     # everyone uses zsh
     defaultUserShell = pkgs.zsh;
@@ -27,21 +36,12 @@
         extraGroups = [ "wheel" ];
         home = "/home/tirth";
         openssh.authorizedKeys.keyFiles = [
-          ./ssh/authorized_keys
-        ];
-      };
-      "xiangd" = {
-        group = "users";
-        isNormalUser = true;
-        home = "/home/xiangd";
-        openssh.authorizedKeys.keyFiles = [
-          ./ssh/authorized_keys
+          ../../ssh/authorized_keys
         ];
       };
     };
   };
 
-  # dont require sudo for myself
   security.sudo.extraRules = [
     {
       users = [ "tirth" ];
@@ -52,7 +52,10 @@
     }
   ];
 
-  # enable vim system-wide
+  # enable steam 
+  jovian.devices.steamdeck.enable = true;
+  jovian.steam.enable = true;
+
   environment.systemPackages = with pkgs; [
     home-manager # user packages are installed with home-brew
     mosh # ssh replacement
@@ -64,9 +67,8 @@
 
   services.tailscale.enable = true;
 
-  services.spice-vdagentd.enable = true;
-
-  # enable nix flakes
+  # enable flakes support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  system.stateVersion = "22.11"; # Did you read the comment?
 }

@@ -25,9 +25,14 @@
       url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    jovian-nixos = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      flake = false; 
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-flake, zettl-flake, rust-overlay, nix-ld, ... }@inputs: let 
+  outputs = { self, nixpkgs, home-manager, neovim-flake, zettl-flake, rust-overlay, nix-ld, jovian-nixos, ... }@inputs: let 
     overlays = [
       neovim-flake.overlays.default
       rust-overlay.overlays.default

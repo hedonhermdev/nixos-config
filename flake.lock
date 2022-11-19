@@ -448,6 +448,22 @@
         "type": "github"
       }
     },
+    "jovian-nixos": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668438481,
+        "narHash": "sha256-veNykk0yVAXYMf/XLVDp4pVXyVEeM6hhk5HXBmWDFgM=",
+        "owner": "Jovian-Experiments",
+        "repo": "Jovian-NixOS",
+        "rev": "cc896be6a3ebbccf04e7e07e89b666fa091a846a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Jovian-Experiments",
+        "repo": "Jovian-NixOS",
+        "type": "github"
+      }
+    },
     "lazygit": {
       "flake": false,
       "locked": {
@@ -843,6 +859,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "jovian-nixos": "jovian-nixos",
         "neovim-flake": "neovim-flake",
         "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_3",

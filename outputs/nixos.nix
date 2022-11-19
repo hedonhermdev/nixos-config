@@ -2,6 +2,7 @@
 
 let
   nixosSystem = inputs.nixpkgs.lib.nixosSystem;
+  jovian-nixos = inputs.jovian-nixos;
 in {
   nixvm-x86_64 = nixosSystem {
     system = "x86_64-linux";
@@ -9,8 +10,9 @@ in {
       inherit inputs;
     };
     modules = [
-      ../nixos/machine/nixvm-x86_64.nix
-      ../nixos/configuration.nix
+      ../nixos/machine/vm/x86_64-hardware.nix
+      ../nixos/machine/vm/configuration.nix
+      ../nixos/ld-patch/x86_64.nix
     ];
   };
 
@@ -20,9 +22,22 @@ in {
       inherit inputs;
     };
     modules = [
-      ../nixos/machine/nixvm-aarch64.nix
-      ../nixos/configuration.nix
-      ../nixos/ld-patch.nix
+      ../nixos/machine/vm/aarch64-hardware.nix
+      ../nixos/machine/vm/configuration.nix
+      ../nixos/ld-patch/aarch64.nix
+    ];
+  };
+
+  steam-deck = nixosSystem {
+    system = "x86_64-linux";
+    specialArgs = {
+      inherit inputs;
+    };
+
+    modules = [
+      (jovian-nixos + "modules")
+      ../nixos/machine/steamdeck/hardware.nix
+      ../nixos/machine/steamdeck/configuration.nix
     ];
   };
 }
