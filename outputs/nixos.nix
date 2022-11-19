@@ -1,11 +1,13 @@
-{inputs}:
+{self, inputs, overlays}:
 
 let
+  inherit (self.lib) mkNixpkgs;
   nixosSystem = inputs.nixpkgs.lib.nixosSystem;
   jovian-nixos = inputs.jovian-nixos;
 in {
-  nixvm-x86_64 = nixosSystem {
+  nixvm-x86_64 = nixosSystem rec {
     system = "x86_64-linux";
+    pkgs = mkNixpkgs { inherit system overlays; };
     specialArgs = {
       inherit inputs;
     };
@@ -16,8 +18,9 @@ in {
     ];
   };
 
-  nixvm-aarch64 = nixosSystem {
+  nixvm-aarch64 = nixosSystem rec {
     system = "aarch64-linux";
+    pkgs = mkNixpkgs { inherit system overlays; };
     specialArgs = {
       inherit inputs;
     };
@@ -28,7 +31,7 @@ in {
     ];
   };
 
-  steam-deck = nixosSystem {
+  steam-deck = nixosSystem rec {
     system = "x86_64-linux";
     specialArgs = {
       inherit inputs;

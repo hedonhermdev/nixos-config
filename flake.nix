@@ -46,7 +46,7 @@
 
     nixosConfigurations = (
       import ./outputs/nixos.nix {
-        inherit inputs;
+        inherit self inputs overlays;
       }
     );
   };
