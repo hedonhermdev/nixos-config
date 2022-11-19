@@ -35,7 +35,7 @@ in {
     };
 
     modules = [
-      (jovian-nixos + "modules")
+      (jovian-nixos + "/modules")
       ../nixos/machine/steamdeck/hardware.nix
       ../nixos/machine/steamdeck/configuration.nix
     ];
