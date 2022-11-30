@@ -36,9 +36,16 @@ in {
     specialArgs = {
       inherit inputs;
     };
+    # pkgs = mkNixpkgs { inherit system overlays; };
 
     modules = [
       (jovian-nixos + "/modules")
+      {
+        nixpkgs = {
+          config.allowUnfree = true;
+          overlays = overlays;
+        };
+      }
       ../nixos/machine/steamdeck/hardware.nix
       ../nixos/machine/steamdeck/configuration.nix
     ];

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -29,7 +29,7 @@
       "tirth" = {
         group = "users";
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "networkmanager" ];
         home = "/home/tirth";
         openssh.authorizedKeys.keyFiles = [
           ../../ssh/authorized_keys
@@ -51,6 +51,7 @@
   # enable steam 
   jovian.devices.steamdeck.enable = true;
   jovian.steam.enable = true;
+  jovian.devices.steamdeck.enableVendorRadv = false;
 
   environment.systemPackages = with pkgs; [
     home-manager # user packages are installed with home-brew
@@ -86,9 +87,16 @@
       UtmpMode = "user";
 
       Restart = "always";
+
+      SupplementaryGroups = "video";
     };
 
     script = ''
+      export PATH=${lib.makeBinPath [ pkgs.libsForQt5.plasma5.plasma-workspace pkgs.xorg.xinit ]}:$PATH
+      #echo $PATH >>~/meow
+      #exec startx >>~/meow 2>&1
+      #exec startplasma-wayland¸
+
       set-session () {
         mkdir -p ~/.local/state
         >~/.local/state/steamos-session-select echo "$1"
@@ -103,6 +111,7 @@
       }
       while :; do
         session=$(consume-session)
+        echo "Starting $session" >> ~/meow
         case "$session" in
           plasma)
             # FIXME: Replace with your favorite method
