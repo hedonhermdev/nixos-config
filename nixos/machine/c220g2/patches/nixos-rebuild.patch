@@ -1,0 +1,17 @@
+diff --git a/pkgs/os-specific/linux/nixos-rebuild/nixos-rebuild.sh b/pkgs/os-specific/linux/nixos-rebuild/nixos-rebuild.sh
+index b58c3b60bf9..92358a12a6b 100755
+--- a/pkgs/os-specific/linux/nixos-rebuild/nixos-rebuild.sh
++++ b/pkgs/os-specific/linux/nixos-rebuild/nixos-rebuild.sh
+@@ -327,10 +327,8 @@ if [[ -n $flake ]]; then
+        flakeAttr="${BASH_REMATCH[2]}"
+     fi
+     if [[ -z $flakeAttr ]]; then
+-        read -r hostname < /proc/sys/kernel/hostname
+-        if [[ -z $hostname ]]; then
+-            hostname=default
+-        fi
++        # HACK for mars-research: hardwired hostname
++        hostname=default
+         flakeAttr="nixosConfigurations.\"$hostname\""
+     else
+         flakeAttr="nixosConfigurations.\"$flakeAttr\""

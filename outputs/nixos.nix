@@ -50,4 +50,31 @@ in {
       ../nixos/machine/steamdeck/configuration.nix
     ];
   };
+
+  c220g2 = nixosSystem rec {
+    system = "x86_64-linux";
+    specialArgs = {
+      inherit inputs;
+    };
+
+    modules = [
+      {
+        nixpkgs = {
+          config.allowUnfree = true;
+          overlays = overlays;
+        };
+      }
+      inputs.miniond.nixosModule
+      inputs.nix-ld.nixosModules.nix-ld
+      ../nixos/machine/c220g2/configuration.nix
+      ../nixos/machine/c220g2/binary-cache.nix
+      ../nixos/machine/c220g2/boot.nix
+      ../nixos/machine/c220g2/devtools.nix
+      ../nixos/machine/c220g2/direnv.nix
+      ../nixos/machine/c220g2/emulab.nix
+      ../nixos/machine/c220g2/hardware-configuration.nix
+      ../nixos/machine/c220g2/nix-ld.nix
+      ../nixos/machine/c220g2/utilities.nix
+    ];
+  };
 }
