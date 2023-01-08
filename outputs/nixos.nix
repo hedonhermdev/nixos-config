@@ -51,6 +51,22 @@ in {
     ];
   };
 
+  rpi = nixosSystem rec {
+    system = "aarch64-linux";
+    specialArgs = {
+      inherit inputs;
+    };
+    modules = [
+      (
+        nixpkgs = (
+          config.allowUnfree = true;
+          overlays = overlays;
+        );
+      ../nixos/machine/steamdeck/hardware.nix
+      ../nixos/machine/steamdeck/configuration.nix
+    ];
+  };
+
   c220g2 = nixosSystem rec {
     system = "x86_64-linux";
     specialArgs = {
