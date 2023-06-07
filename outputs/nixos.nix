@@ -57,13 +57,36 @@ in {
       inherit inputs;
     };
     modules = [
-      (
-        nixpkgs = (
+      {
+        nixpkgs = {
           config.allowUnfree = true;
           overlays = overlays;
-        );
+        };
+      }
       ../nixos/machine/steamdeck/hardware.nix
       ../nixos/machine/steamdeck/configuration.nix
+    ];
+  };
+
+  hp-pavillion = nixosSystem rec {
+    system = "x86_64-linux";
+    specialArgs = {
+      inherit inputs;
+    };
+
+    modules = [
+      {
+        nixpkgs = {
+          config = {
+            allowUnfree = true;
+            # cudaSupport = true;
+          };
+          overlays = overlays;
+        };
+      }
+      ../nixos/machine/hp-pavillion/hardware.nix
+      ../nixos/machine/hp-pavillion/configuration.nix
+      ../nixos/machine/hp-pavillion/cachix.nix
     ];
   };
 

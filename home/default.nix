@@ -4,6 +4,7 @@ let
   bat
   exa
   fd
+  firefox-bin
   fortune
   fzf
   gcc
@@ -13,6 +14,7 @@ let
   htop
   httpie
   hyperfine
+  kitty
   ngrok
   nodejs
   nvimPacked
