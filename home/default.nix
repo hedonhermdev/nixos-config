@@ -1,6 +1,7 @@
 { config, lib, pkgs, stdenv, ... }:
 let
   defaultPkgs = with pkgs; [
+  attic
   bat
   exa
   fd

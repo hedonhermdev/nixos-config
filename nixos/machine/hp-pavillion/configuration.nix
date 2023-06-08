@@ -61,8 +61,8 @@
 
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
 
   users = {
@@ -116,10 +116,15 @@
 
   programs.git.enable = true;
 
+  programs.zsh.enable = true;
+
   services.tailscale.enable = true;
 
   # enable flakes support
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "root" "tirth" ];
+  };
 
   system.stateVersion = "23.05";
 }

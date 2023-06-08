@@ -3,8 +3,15 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     mars-std.url = "github:mars-research/mars-std";
+
     miniond.url = "github:mars-research/miniond";
+    
+    attic = {
+      url = github:zhaofengli/attic;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = github:nix-community/home-manager;
@@ -34,12 +41,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-flake, zettl-flake, rust-overlay, nix-ld, jovian-nixos, mars-std, miniond, ... }@inputs: let 
+  outputs = { self, nixpkgs, home-manager, attic, neovim-flake, zettl-flake, rust-overlay, nix-ld, jovian-nixos, mars-std, miniond, ... }@inputs: let 
     overlays = [
       neovim-flake.overlays.default
       rust-overlay.overlays.default
       zettl-flake.overlays.default
       mars-std.overlay
+      attic.overlays.default
     ];
   in {
     lib = import ./lib { inherit inputs; };
