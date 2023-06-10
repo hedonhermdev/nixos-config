@@ -1,10 +1,11 @@
-{self, inputs, overlays}:
+{ self, inputs, overlays }:
 
 let
   inherit (self.lib) mkNixpkgs;
   nixosSystem = inputs.nixpkgs.lib.nixosSystem;
   jovian-nixos = inputs.jovian-nixos;
-in {
+in
+{
   nixvm-x86_64 = nixosSystem rec {
     system = "x86_64-linux";
     pkgs = mkNixpkgs { inherit system overlays; };

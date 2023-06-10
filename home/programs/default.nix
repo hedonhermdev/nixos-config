@@ -1,10 +1,10 @@
 [
-./exa.nix
-./fzf.nix
-./git.nix
-./nvim.nix
-./tmux.nix
-./zoxide.nix
-./zettl.nix
-./zsh.nix
+  ./exa.nix
+  ./fzf.nix
+  ./git.nix
+  ./nvim.nix
+  ./tmux.nix
+  ./zoxide.nix
+  ./zettl.nix
+  ./zsh.nix
 ]

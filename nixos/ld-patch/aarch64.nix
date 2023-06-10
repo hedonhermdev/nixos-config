@@ -7,7 +7,8 @@ let
   impureLibraryPath = with pkgs; lib.makeLibraryPath [
     stdenv.cc.cc
   ];
-in {
+in
+{
   imports = [
     inputs.nix-ld.nixosModules.nix-ld
   ];

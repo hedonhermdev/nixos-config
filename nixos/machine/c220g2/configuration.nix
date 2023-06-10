@@ -15,9 +15,9 @@
   nixpkgs.overlays = [
     (self: super: {
       nixos-rebuild = super.nixos-rebuild.overrideAttrs (old: {
-      	postInstall = ''
-          patch $out/bin/nixos-rebuild ${./patches/nixos-rebuild.patch}
-	'';
+        postInstall = ''
+                    patch $out/bin/nixos-rebuild ${./patches/nixos-rebuild.patch}
+          	'';
       });
     })
   ];
@@ -27,7 +27,7 @@
   networking.firewall.enable = false;
 
   services.openssh.enable = true;
-  
+
   environment.systemPackages = with pkgs; [
     home-manager # user packages are installed with home-brew
     mosh # ssh replacement

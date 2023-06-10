@@ -7,7 +7,8 @@ let
   impureLibraryPath = with pkgs; lib.makeLibraryPath [
     stdenv.cc.cc
   ];
-in {
+in
+{
   environment.sessionVariables = {
     NIX_LD = lib.mkIf (pkgs.system == "x86_64-linux") "${pkgs.glibc}/lib64/ld-linux-x86-64.so.2";
     NIX_LD_LIBRARY_PATH = impureLibraryPath;

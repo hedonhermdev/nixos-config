@@ -4,10 +4,10 @@ with inputs;
 {
 
   mkNixpkgs = { system, overlays }: import nixpkgs {
-      inherit system overlays;
-      config = {
-        allowUnfree = true;
-      };
+    inherit system overlays;
+    config = {
+      allowUnfree = true;
+    };
   };
 
   mkHome = { pkgs, system, username, homeDirectory }: (

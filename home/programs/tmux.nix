@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
-let 
+let
   plugins = pkgs.tmuxPlugins;
-in {
+in
+{
   programs.tmux = {
     enable = true;
     escapeTime = 0;

@@ -29,7 +29,8 @@
       "tirth" = {
         group = "users";
         isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" ]; home = "/home/tirth";
+        extraGroups = [ "wheel" "networkmanager" ];
+        home = "/home/tirth";
         openssh.authorizedKeys.keyFiles = [
           ../../ssh/authorized_keys
         ];

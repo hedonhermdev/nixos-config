@@ -17,7 +17,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
+
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
@@ -34,7 +34,8 @@
       "tirth" = {
         group = "users";
         isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" ]; home = "/home/tirth";
+        extraGroups = [ "wheel" "networkmanager" ];
+        home = "/home/tirth";
         openssh.authorizedKeys.keyFiles = [
           ../../ssh/authorized_keys
         ];

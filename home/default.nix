@@ -1,39 +1,40 @@
 { config, lib, pkgs, stdenv, ... }:
 let
   defaultPkgs = with pkgs; [
-  attic
-  bat
-  exa
-  fd
-  firefox-bin
-  fortune
-  fzf
-  gcc
-  gdb
-  git
-  glow
-  htop
-  httpie
-  hyperfine
-  kitty
-  ngrok
-  nodejs
-  nvimPacked
-  ranger
-  ripgrep
-  rnix-lsp
-  rust-bin.stable.latest.default
-  rust-analyzer
-  thefuck
-  tldr
-  tmux
-  wget
-  zoxide
+    attic
+    bat
+    exa
+    fd
+    firefox-bin
+    fortune
+    fzf
+    gcc
+    gdb
+    git
+    glow
+    htop
+    httpie
+    hyperfine
+    kitty
+    ngrok
+    nodejs
+    nvimPacked
+    ranger
+    ripgrep
+    rnix-lsp
+    rust-bin.stable.latest.default
+    rust-analyzer
+    thefuck
+    tldr
+    tmux
+    wget
+    zoxide
   ];
-  
-in {
+
+in
+{
   home = {
-    stateVersion =  "22.11";
+    stateVersion = "22.11";
 
     packages = defaultPkgs;
 
@@ -50,7 +51,7 @@ in {
       "nr" = "nix repl";
     };
   };
-  
+
   programs = {
     home-manager = {
       enable = true;

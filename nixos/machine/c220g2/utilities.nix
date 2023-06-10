@@ -9,15 +9,23 @@
   environment.systemPackages = with pkgs; [
     mars-research.mars-tools
 
-    file wget curl pv
+    file
+    wget
+    curl
+    pv
 
-    git git-crypt
+    git
+    git-crypt
 
-    libarchive p7zip
+    libarchive
+    p7zip
 
-    usbutils pciutils
+    usbutils
+    pciutils
 
-    iotop iftop htop
+    iotop
+    iftop
+    htop
 
     alacritty.terminfo
     kitty.terminfo

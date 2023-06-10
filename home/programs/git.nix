@@ -1,13 +1,12 @@
 { config, pkgs, ... }:
 
-let 
+let
   gitConfig = {
-    core = {
-    };
+    core = { };
     init.defaultBranch = "main";
     merge = {
       conflictStyle = "diff3";
-      tool          = "vim_mergetool";
+      tool = "vim_mergetool";
     };
     pull.rebase = true;
     push.autoSetupRemote = true;
@@ -19,7 +18,8 @@ let
     };
   };
   rg = "${pkgs.ripgrep}/bin/rg";
-in {
+in
+{
   programs.git = {
     enable = true;
     extraConfig = gitConfig;

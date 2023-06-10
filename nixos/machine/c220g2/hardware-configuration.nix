@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "ahci" "mpt3sas" "usbhid" ];
@@ -14,7 +15,8 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8b9e1980-828f-418f-ae44-80689ca8bd2f";
+    {
+      device = "/dev/disk/by-uuid/8b9e1980-828f-418f-ae44-80689ca8bd2f";
       fsType = "ext3";
     };
 

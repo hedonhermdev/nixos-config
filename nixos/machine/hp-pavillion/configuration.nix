@@ -99,6 +99,11 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  services.logind.lidSwitch = "ignore";
+  services.logind.lidSwitchExternalPower = "ignore";
+  services.logind.lidSwitchDocked = "ignore";
+
+
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
@@ -119,6 +124,14 @@
   programs.zsh.enable = true;
 
   services.tailscale.enable = true;
+
+  services.hydra = {
+    enable = true;
+    hydraURL = "http://localhost:3000";
+    notificationSender = "hydra@localhost";
+    buildMachinesFiles = [ ];
+    useSubstitutes = true;
+  };
 
   # enable flakes support
   nix.settings = {
