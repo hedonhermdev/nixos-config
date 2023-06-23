@@ -1,11 +1,9 @@
 { config, lib, pkgs, stdenv, ... }:
 let
   defaultPkgs = with pkgs; [
-    attic
     bat
     exa
     fd
-    firefox-bin
     fortune
     fzf
     gcc
@@ -30,18 +28,15 @@ let
     wget
     zoxide
   ];
-
 in
 {
   home = {
-    stateVersion = "22.11";
+    stateVersion = "23.05";
 
     packages = defaultPkgs;
 
     shellAliases = {
       "ls" = "exa --icons";
-      "ls -l" = "exa --icons --long --header --git";
-      "ls -x" = "exa --icons --long --extended";
       "cd" = "z";
       "nd" = "nix develop";
       "ns" = "nix-shell";
