@@ -934,11 +934,11 @@
         "vsnip": "vsnip"
       },
       "locked": {
-        "lastModified": 1687523260,
-        "narHash": "sha256-NQ+6D/i2sxePXYIhj7jiL2jc+IcYJirqhL7mBC6vl2A=",
+        "lastModified": 1687525108,
+        "narHash": "sha256-RxYAcLeYZqsVW38FK5Dy06eqzVlUKfYdU7kU2LgJiGs=",
         "owner": "hedonhermdev",
         "repo": "neovim-flake",
-        "rev": "7d1268f3895d6029a8df84255cd0125e3e8222b8",
+        "rev": "f9a3d7ea9b6f089e76f14497e058c58ed3afc525",
         "type": "github"
       },
       "original": {

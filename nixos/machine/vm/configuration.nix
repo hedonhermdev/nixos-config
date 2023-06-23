@@ -11,8 +11,10 @@
   services = {
     openssh = {
       enable = true;
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
+      settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      };
     };
   };
 
@@ -61,6 +63,8 @@
   programs.mosh.enable = true; # start mosh server
 
   programs.git.enable = true;
+
+  programs.zsh.enable = true;
 
   services.tailscale.enable = true;
 
