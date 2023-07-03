@@ -28,7 +28,7 @@ with lib;
 
     enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
 
     initExtra = ''
       bindkey '^[[A' history-substring-search-up

@@ -26,6 +26,7 @@ let
     tldr
     tmux
     wget
+    yarn
     zoxide
   ];
 in
@@ -45,6 +46,10 @@ in
       "nfs" = "nix flake show";
       "nr" = "nix repl";
     };
+
+    sessionPath = [ 
+      "$HOME/node/bin"
+    ];
   };
 
   programs = {
