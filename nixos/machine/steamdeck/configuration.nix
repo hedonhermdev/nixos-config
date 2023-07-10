@@ -9,11 +9,13 @@
 
   system.autoUpgrade.channel = "https://nixos.org/channels/unstable/";
 
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.lightdm.enable = false;
+    displayManager.startx.enable = true;
+    desktopManager.plasma5.enable = true;
+  };
 
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.lightdm.enable = false;
 
   # enable openssh
   services.openssh = {
@@ -87,16 +89,9 @@
       UtmpMode = "user";
 
       Restart = "always";
-
-      SupplementaryGroups = "video";
     };
 
     script = ''
-      export PATH=${lib.makeBinPath [ pkgs.libsForQt5.plasma5.plasma-workspace pkgs.xorg.xinit ]}:$PATH
-      #echo $PATH >>~/meow
-      #exec startx >>~/meow 2>&1
-      #exec startplasma-wayland¸
-
       set-session () {
         mkdir -p ~/.local/state
         >~/.local/state/steamos-session-select echo "$1"
@@ -111,7 +106,6 @@
       }
       while :; do
         session=$(consume-session)
-        echo "Starting $session" >> ~/meow
         case "$session" in
           plasma)
             # FIXME: Replace with your favorite method
@@ -125,5 +119,5 @@
     '';
   };
 
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, stdenv, ... }:
+{ lib, hasGui, pkgs, ... }:
 let
   defaultPkgs = with pkgs; [
     bat
@@ -7,13 +7,13 @@ let
     fortune
     fzf
     gcc
-    gdb
     git
     glow
     htop
     httpie
     hyperfine
     kitty
+    libiconv
     ngrok
     nodejs
     nvimPacked
@@ -28,7 +28,9 @@ let
     wget
     yarn
     zoxide
-  ];
+  ] ++ (if hasGui then with pkgs; [
+    firefox-bin
+  ] else [ ]);
 in
 {
   home = {
@@ -47,10 +49,13 @@ in
       "nr" = "nix repl";
     };
 
-    sessionPath = [ 
+    sessionPath = [
       "$HOME/node/bin"
     ];
+
+    sessionVariables.LIBRARY_PATH = ''${lib.makeLibraryPath [pkgs.libiconv]}''${LIBRARY_PATH:+:$LIBRARY_PATH}'';
   };
+
 
   programs = {
     home-manager = {

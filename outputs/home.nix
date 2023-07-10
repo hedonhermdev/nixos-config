@@ -45,4 +45,15 @@ in
       inherit system username homeDirectory;
       pkgs = mkNixpkgs { inherit system overlays; };
     };
+
+  tirthjain-macos = 
+    let
+      system = "aarch64-darwin";
+      username = "tirthjain";
+      homeDirectory = "/Users/tirthjain/";
+    in
+    mkHome rec {
+      inherit system username homeDirectory;
+      pkgs = mkNixpkgs { inherit system overlays; };
+    };
 }

@@ -10,11 +10,14 @@ with inputs;
     };
   };
 
-  mkHome = { pkgs, system, username, homeDirectory }: (
+  mkHome = { pkgs, system, hasGui ? false, username, homeDirectory }: (
     home-manager.lib.homeManagerConfiguration rec {
       inherit pkgs;
       modules = [
-        ../home
+        (import ../home { 
+          inherit pkgs hasGui;
+          lib = pkgs.lib;
+        })
         zettl-flake.nixosModules."${system}".hm
         {
           home = { inherit username homeDirectory; };
