@@ -8,12 +8,16 @@ let
     fzf
     gcc
     git
+    graphviz
     glow
     htop
     httpie
     hyperfine
+    imgcat
+    jq
     kitty
     libiconv
+    librsvg
     ngrok
     nodejs
     nvimPacked
@@ -47,6 +51,9 @@ in
       "nfu" = "nix flake update";
       "nfs" = "nix flake show";
       "nr" = "nix repl";
+      "itrans" = "sed  '/bgcolor=/s/\(bgcolor=\)\".*\"/\1\"transparent\"/; t; /}/{N;N;s/}/bgcolor=\"transparent\";\n}/;}'";
+      "idot" = "${pkgs.graphviz}/bin/dot -Tsvg";
+      "isvg" = "${pkgs.librsvg}/bin/rsvg-convert | ${pkgs.imgcat}/bin/imgcat";
     };
 
     sessionPath = [
