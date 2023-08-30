@@ -61,8 +61,8 @@ in
     ];
 
     sessionVariables.LIBRARY_PATH = ''${lib.makeLibraryPath [pkgs.libiconv]}''${LIBRARY_PATH:+:$LIBRARY_PATH}'';
+    sessionVariables.LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib";
   };
-
 
   programs = {
     home-manager = {

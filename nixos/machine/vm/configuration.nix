@@ -58,6 +58,7 @@
   environment.systemPackages = with pkgs; [
     home-manager # user packages are installed with home-brew
     mosh # ssh replacement
+    stdenv.cc.cc.lib
   ];
 
   programs.mosh.enable = true; # start mosh server
